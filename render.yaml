@@ -1,0 +1,24 @@
+# One-click deploy on Render: New + > Blueprint > pick your repository.
+services:
+  - type: web
+    name: kilo-kitchen
+    runtime: node
+    plan: starter            # a persistent disk needs a paid plan on Render
+    buildCommand: echo "no build step"
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    disk:
+      name: kilo-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATA_DIR
+        value: /data
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SITE_URL
+        sync: false          # you will be asked to type your website address
+      - key: ADMIN_SETUP_KEY
+        generateValue: true  # a random key; you'll need it once to create your admin account

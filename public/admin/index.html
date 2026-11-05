@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Admin · Kilo Kitchen</title>
+  <link rel="icon" href="../assets/img/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Auth -->
+  <main class="auth" id="auth" hidden>
+    <form class="auth-card" id="authForm" novalidate>
+      <img src="../assets/img/logo.png" alt="" width="56" height="56">
+      <h1 id="authTitle">Sign in</h1>
+      <p class="sub" id="authSub">Kilo Kitchen admin</p>
+      <label id="keyWrap" hidden>Setup key<input type="password" name="key" autocomplete="off"></label>
+      <label>Email<input type="email" name="email" required autocomplete="username"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password" minlength="10"></label>
+      <label id="pw2Wrap" hidden>Confirm password<input type="password" name="password2" autocomplete="new-password"></label>
+      <button class="btn primary block" id="authBtn">Sign in</button>
+      <p class="msg" id="authMsg" role="alert"></p>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div class="app" id="app" hidden>
+    <aside class="side" id="side">
+      <div class="side-brand"><img src="../assets/img/logo.png" alt="" width="34" height="34"><span id="sideName">Kilo</span></div>
+      <nav id="sideNav" aria-label="Admin sections"></nav>
+      <div class="side-foot"><a href="/" target="_blank" rel="noopener">View live site ↗</a><button class="linkbtn" id="logoutBtn">Sign out</button></div>
+    </aside>
+    <div class="main">
+      <header class="top">
+        <button class="menu-btn" id="sideToggle" aria-label="Toggle navigation">☰</button>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="top-right"><span class="live" id="liveDot" title="Live updates on">● Live</span><button class="btn ghost sm" id="themeA" aria-label="Toggle theme">◐</button></div>
+      </header>
+      <div id="view" class="view" tabindex="-1"></div>
+    </div>
+  </div>
+
+  <dialog id="dlg" class="dlg"><form method="dialog" id="dlgForm" novalidate><div class="dlg-head"><h2 id="dlgTitle"></h2><button type="button" class="x" data-x aria-label="Close">✕</button></div><div class="dlg-body" id="dlgBody"></div><div class="dlg-foot" id="dlgFoot"></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="admin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESC}}">
+  <meta name="theme-color" content="{{ACCENT}}">
+  <link rel="canonical" href="{{CANON}}">
+  <link rel="icon" type="image/png" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESC}}">
+  <meta property="og:image" content="{{OGIMG}}">
+  <meta property="og:url" content="{{OGURL}}">
+  <meta name="twitter:image" content="{{OGIMG}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>:root{--accent:{{ACCENT}}}</style>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <noscript><style>body.pending{visibility:visible!important;animation:none!important}</style></noscript>
+  <script src="assets/js/theme.js"></script>
+  {{JSONLD}}
+</head>
+<body class="pending">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="top-fixed" id="topFixed">
+  <div class="announce" id="announce" hidden></div>
+
+  <header class="nav-wrap">
+    <div class="nav" id="navbar">
+      <a class="brand" href="#top" id="brand" aria-label="Home"></a>
+      <nav class="links" id="links" aria-label="Main">
+        <a href="#about">Story</a><a href="#menu">Menu</a><a href="#reserve">Reserve</a>
+        <a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Visit</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="trackOpen" aria-label="Track my order" title="Track my order">
+          <svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></button>
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button>
+        <button class="icon-btn cart-btn" id="cartOpen" aria-label="Open your order">
+          <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7zM9 7a3 3 0 0 1 6 0"/></svg><span class="count" id="cartCount">0</span></button>
+        <a class="btn btn-accent nav-cta" href="#reserve">Reserve</a>
+        <button class="icon-btn burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="cookie" id="cookie" hidden><p>We only use essential storage (your order, theme and saved dishes). No tracking.</p><button class="btn btn-accent sm" id="cookieOk">Got it</button></div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="blob b1"></div><div class="blob b2"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" id="heroEyebrow"></p>
+          <h1 id="heroTitle"></h1>
+          <p class="lead" id="heroSub"></p>
+          <div class="cta-row">
+            <a href="#menu" class="btn btn-glow btn-lg">Order online</a>
+            <a href="#reserve" class="btn btn-outline btn-lg">Reserve a table</a>
+          </div>
+          <div class="hero-meta">
+            <span class="pill" id="openPill"><i></i><b>…</b></span>
+            <span class="pill" id="ratingPill"></span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="false">
+          <div class="art main"><img id="heroImg" alt="Signature dish" fetchpriority="high"></div>
+          <div class="art sm1"><img id="heroImg2" alt="" loading="lazy"></div>
+          <div class="art sm2"><img id="heroImg3" alt="" loading="lazy"></div>
+          <button class="special" id="specialCard" hidden></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
+    <!-- BENTO: values + stats -->
+    <section class="section" aria-label="Why Kilo">
+      <div class="wrap bento" id="bento"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="wrap split">
+        <div class="media reveal">
+          <img id="aboutImg" alt="" loading="lazy"><img id="aboutImg2" class="inset" alt="" loading="lazy">
+        </div>
+        <div class="copy reveal">
+          <p class="eyebrow" id="aboutEyebrow"></p>
+          <h2 id="aboutTitle"></h2>
+          <p id="aboutT1"></p><p id="aboutT2"></p>
+          <ul class="ticks" id="aboutList"></ul>
+          <a href="#menu" class="btn btn-accent">Explore the menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="section tinted" id="menu">
+      <div class="wrap">
+        <div class="head reveal"><p class="eyebrow">Choose from</p><h2>Our menu</h2><p class="muted">Tap a dish for details. Add to your order for pickup or delivery.</p></div>
+      </div>
+      <div class="menu-bar-wrap" id="menuBarWrap">
+        <div class="wrap menu-bar" id="menuBar">
+          <div class="cats" id="cats" role="tablist" aria-label="Menu categories"></div>
+          <div class="tools">
+            <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sr">Search</span><input type="search" id="q" placeholder="Search dishes" autocomplete="off"></label>
+            <div class="diets" id="diets" role="group" aria-label="Dietary filters">
+              <button class="chip" data-d="V" aria-pressed="false">Vegetarian</button><button class="chip" data-d="VG" aria-pressed="false">Vegan</button>
+              <button class="chip" data-d="GF" aria-pressed="false">Gluten-free</button><button class="chip" data-d="Spicy" aria-pressed="false">Spicy</button>
+              <button class="chip" data-d="fav" aria-pressed="false">♥ Saved</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="dishes" id="dishes" aria-live="polite"></div>
+        <p class="empty" id="dishesEmpty" hidden>Nothing matches that. Try clearing a filter.</p>
+        <p class="tiny center muted">V vegetarian · VG vegan · GF gluten-free. Tell us about allergies when you order.</p>
+      </div>
+    </section>
+
+    <!-- CATERING -->
+    <section class="band" id="catering" hidden>
+      <img id="cateringImg" alt="" loading="lazy"><div class="shade"></div>
+      <div class="wrap center"><h2 id="cateringTitle"></h2><p id="cateringText"></p><a href="#contact" class="btn btn-glow btn-lg" data-topic="Catering quote">Request a quote</a></div>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="section" id="reserve">
+      <div class="wrap split">
+        <div class="copy reveal">
+          <p class="eyebrow">Reservations</p><h2>Save your seat at the table</h2>
+          <p class="muted">Pick a day, a time and your party size. Instant confirmation request, no phone tag.</p>
+          <div class="hours card" id="hoursCard"></div>
+        </div>
+        <form class="card form glow" id="resForm" novalidate>
+          <h3>Book a table</h3>
+          <div class="grid2">
+            <label>Date<input type="date" name="date" id="resDate" required></label>
+            <div class="field"><span class="lbl">Guests</span>
+              <div class="stepper"><button type="button" id="gMinus" aria-label="Fewer guests">−</button><output id="gOut">2</output><button type="button" id="gPlus" aria-label="More guests">+</button></div></div>
+          </div>
+          <div class="field"><span class="lbl">Time</span><div class="slots" id="slots" role="radiogroup" aria-label="Time"></div><small class="err" data-for="time"></small></div>
+          <div class="grid2"><label>Full name<input name="name" required autocomplete="name"><small class="err"></small></label>
+            <label>Phone<input name="phone" type="tel" required autocomplete="tel"><small class="err"></small></label></div>
+          <label>Email<input name="email" type="email" required autocomplete="email"><small class="err"></small></label>
+          <label>Notes <span class="muted">(optional)</span><textarea name="notes" rows="2" placeholder="Allergies, celebrations, high chair…"></textarea></label>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-glow btn-block btn-lg" type="submit">Request reservation</button>
+          <p class="msg" id="resMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section dark" id="gallery">
+      <div class="wrap"><div class="head reveal"><p class="eyebrow">Gallery</p><h2>A taste of what's on the table</h2></div>
+        <div class="gallery" id="galleryGrid"></div></div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" id="team">
+      <div class="wrap"><div class="head reveal"><p class="eyebrow">The people</p><h2>Meet our team</h2></div>
+        <div class="team" id="teamGrid"></div></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section tinted" id="reviews">
+      <div class="wrap narrow"><div class="head reveal"><p class="eyebrow">Reviews</p><h2>Loved by our guests</h2></div>
+        <div class="slider" id="slider" aria-roledescription="carousel"></div></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap narrow"><div class="head reveal"><p class="eyebrow">Good to know</p><h2>Questions, answered</h2></div>
+        <div class="faq" id="faqList"></div></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section tinted" id="contact">
+      <div class="wrap split top">
+        <div class="copy reveal">
+          <p class="eyebrow">Visit us</p><h2>Come hungry. Leave happy.</h2>
+          <ul class="contact" id="contactList"></ul>
+          <div class="socials" id="socials"></div>
+          <div class="map" id="mapBox"></div>
+        </div>
+        <form class="card form" id="msgForm" novalidate>
+          <h3>Send us a message</h3>
+          <label>Name<input name="name" required autocomplete="name"><small class="err"></small></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"><small class="err"></small></label>
+          <label>Topic<select name="topic" id="topic"><option>General question</option><option>Catering quote</option><option>Private event</option><option>Feedback</option></select></label>
+          <label>Message<textarea name="message" rows="4" required></textarea><small class="err"></small></label>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-accent btn-block" type="submit">Send message</button>
+          <p class="msg" id="msgMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="news">
+      <div class="wrap news-in">
+        <div><h2>Discover what's cooking</h2><p>Seasonal menus, offers and recipes. No spam.</p></div>
+        <form id="newsForm" novalidate><label class="sr" for="newsEmail">Email</label>
+          <input id="newsEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-glow">Subscribe</button><p class="msg light" id="newsMsg" role="status"></p></form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap fgrid">
+      <div><a class="brand" href="#top" id="fbrand"></a><p class="muted" id="fTag"></p></div>
+      <div><h4>Explore</h4><ul><li><a href="#menu">Menu</a></li><li><a href="#reserve">Reservations</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Support</h4><ul id="fContact"></ul></div>
+      <div><h4>Hours</h4><ul id="fHours"></ul></div>
+    </div>
+    <div class="wrap fbot"><span>© <span id="year"></span> <span id="fName"></span>. All rights reserved.</span><a href="privacy.html">Privacy &amp; terms</a><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <!-- Cart sheet -->
+  <dialog class="sheet" id="cartDlg" aria-label="Your order">
+    <div class="sheet-head"><h3>Your order</h3><button class="icon-btn" data-close aria-label="Close">✕</button></div>
+    <div class="sheet-body" id="cartBody"></div>
+    <div class="sheet-foot" id="cartFoot">
+      <div class="promo"><input id="promoIn" placeholder="Promo code" autocomplete="off"><button class="btn btn-outline sm" id="promoBtn" type="button">Apply</button></div>
+      <p class="msg" id="promoMsg"></p>
+      <div class="totals" id="cartTotals"></div>
+      <button class="btn btn-glow btn-block btn-lg" id="checkoutBtn">Checkout</button>
+      <button class="link" id="clearCart" type="button">Clear order</button>
+    </div>
+  </dialog>
+
+  <!-- Checkout -->
+  <dialog class="modal" id="coDlg" aria-labelledby="coTitle">
+    <button class="icon-btn x" data-close aria-label="Close">✕</button>
+    <form id="coForm" class="form" novalidate>
+      <h3 id="coTitle">Complete your order</h3>
+      <div class="seg" id="typeSeg" role="radiogroup" aria-label="Order type"></div>
+      <label>When<select name="when" id="whenSel"></select></label>
+      <div class="grid2"><label>Name<input name="name" required autocomplete="name"><small class="err"></small></label>
+        <label>Phone<input name="phone" type="tel" required autocomplete="tel"><small class="err"></small></label></div>
+      <label>Email <span class="muted">(for confirmation, optional)</span><input name="email" type="email" autocomplete="email"><small class="err"></small></label>
+      <label id="addrWrap" hidden>Delivery address<input name="address" autocomplete="street-address"><small class="err"></small></label>
+      <div class="field"><span class="lbl">Tip the kitchen</span><div class="tips" id="tips"></div></div>
+      <div class="grid2"><label>Payment<select name="pay" id="paySel"></select></label>
+        <label>Notes <span class="muted">(optional)</span><input name="notes" placeholder="Allergies, gate code…"></label></div>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="co-sum" id="coSum"></div>
+      <button class="btn btn-glow btn-block btn-lg" type="submit" id="coSubmit">Place order</button>
+      <p class="msg" id="coMsg" role="status"></p>
+    </form>
+    <div class="done" id="coDone" hidden></div>
+  </dialog>
+
+  <!-- Dish -->
+  <dialog class="modal dish-modal" id="dishDlg" aria-label="Dish details"><button class="icon-btn x" data-close aria-label="Close">✕</button><div id="dishBody"></div></dialog>
+
+  <!-- Track -->
+  <dialog class="modal" id="trackDlg" aria-labelledby="trTitle"><button class="icon-btn x" data-close aria-label="Close">✕</button>
+    <h3 id="trTitle">Track your order</h3>
+    <form id="trackForm" class="form" novalidate>
+      <div class="grid2"><label>Order reference<input name="ref" placeholder="e.g. A1B2C3" autocomplete="off" required></label>
+        <label>Phone used to order<input name="phone" type="tel" required></label></div>
+      <button class="btn btn-accent btn-block">Track</button><p class="msg" id="trMsg" role="status"></p>
+    </form><div id="trResult"></div>
+  </dialog>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lbDlg" aria-label="Image viewer"><button class="icon-btn x" data-close aria-label="Close">✕</button>
+    <button class="lb-nav prev" id="lbPrev" aria-label="Previous">‹</button><img id="lbImg" alt=""><button class="lb-nav next" id="lbNext" aria-label="Next">›</button><p id="lbCap"></p></dialog>
+
+  <script type="application/json" id="site-data">{{SITE_DATA}}</script>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

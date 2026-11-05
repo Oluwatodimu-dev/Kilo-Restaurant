@@ -1,0 +1,27 @@
+KILO KITCHEN: START HERE
+========================
+
+You can look at your website in 3 ways. No typing, no command line.
+
+1) QUICKEST: double-click  PREVIEW.html
+   Opens in your browser. The full website AND the admin dashboard work.
+   (Click "Open admin dashboard" in the black bar at the top.)
+   Changes you make are saved in that browser only: it is a safe playground.
+   Emails are not sent in preview mode.
+
+2) THE REAL THING ON YOUR COMPUTER: double-click the launcher for your system
+      Windows : START-WINDOWS.bat
+      Mac     : START-MAC.command   (first time: right-click > Open)
+      Linux   : start-linux.sh
+   It needs the free "Node.js" program once. If it is missing, the launcher opens
+   the download page for you: install the LTS version, then double-click again.
+   Your browser opens the website and the admin page automatically.
+   On first visit to /admin you create your own admin password.
+   Keep the black window open while you use it; close it to stop.
+
+3) ON THE INTERNET (for real customers): follow PUBLISH-NOW.md (step by step)
+   More hosting options and troubleshooting: DEPLOY.md
+
+The 2 files you will use most:
+   PREVIEW.html     : instant preview (contains SAMPLE reviews/staff/contact details; the real site starts clean)
+   PUBLISH-NOW.md   : go live step by step

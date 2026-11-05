@@ -1,0 +1,88 @@
+{
+ "team": [
+  {
+   "id": "t1",
+   "name": "Alex Smith",
+   "role": "Restaurant Manager",
+   "bio": "Oversees daily service, quality and guest experience with a calm hand and a sharp eye.",
+   "img": "assets/img/manager.jpg"
+  },
+  {
+   "id": "t2",
+   "name": "Margaret Theresa",
+   "role": "Head Chef",
+   "bio": "Designs every menu, leads the kitchen and guards the standards behind each plate.",
+   "img": "assets/img/chef1.jpg"
+  },
+  {
+   "id": "t3",
+   "name": "Mary Reuben",
+   "role": "Sous Chef",
+   "bio": "Runs the line with precision, from first prep to last pass, under any amount of pressure.",
+   "img": "assets/img/chef2.jpg"
+  },
+  {
+   "id": "t4",
+   "name": "Hussein Wahab",
+   "role": "Guest Relations",
+   "bio": "Handles every question, booking and special request so every guest feels looked after.",
+   "img": "assets/img/chef3.jpg"
+  }
+ ],
+ "reviews": [
+  {
+   "id": "r1",
+   "name": "Sample Guest 1",
+   "role": "Replace with a real review",
+   "text": "Really great quality food, awesome flavors and dishes we would never know how to make at home. The shakshuka is unreal.",
+   "rating": 5,
+   "img": "assets/img/guest1.jpg",
+   "visible": true
+  },
+  {
+   "id": "r2",
+   "name": "Sample Guest 2",
+   "role": "Replace with a real review",
+   "text": "The hummus alone is worth the trip. Warm service, generous portions and a room that feels like a celebration.",
+   "rating": 5,
+   "img": "assets/img/guest2.jpg",
+   "visible": true
+  },
+  {
+   "id": "r3",
+   "name": "Sample Guest 3",
+   "role": "Replace with a real review",
+   "text": "We catered our office launch and every platter came back empty. Professional, on time and delicious.",
+   "rating": 5,
+   "img": "assets/img/chef3.jpg",
+   "visible": true
+  }
+ ],
+ "stats": [
+  {
+   "value": "80%",
+   "label": "Ingredients from local producers"
+  },
+  {
+   "value": "50+",
+   "label": "Years of combined kitchen experience"
+  },
+  {
+   "value": "530k+",
+   "label": "Plates served with love"
+  },
+  {
+   "value": "30 min",
+   "label": "Average delivery & pickup time"
+  }
+ ],
+ "contact": {
+  "address": "12 Market Street, Sample City",
+  "phone": "+1 555 010 0199",
+  "email": "hello@example.com",
+  "whatsapp": "15550100199"
+ },
+ "announcement": {
+  "enabled": true
+ }
+}
